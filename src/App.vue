@@ -1,30 +1,48 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-</script>
+<!--
+ * @Author: 祝占朋 wb.zhuzhanpeng01@mesg.corp.netease.com
+ * @Date: 2024-01-09 15:28:56
+ * @LastEditors: 祝占朋 wb.zhuzhanpeng01@mesg.corp.netease.com
+ * @LastEditTime: 2024-01-11 10:47:35
+ * @FilePath: /QAnything/front_end/src/App.vue
+ * @Description: 
+-->
 
 <template>
-    <div>
-        <a href="https://vite.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
+  <a-config-provider :locale="locale" :auto-insert-space-in-button="false">
+    <div class="page-app">
+      <router-view></router-view>
+      <UserPhoneDialog />
     </div>
-    <HelloWorld msg="Vite + Vue" />
+  </a-config-provider>
 </template>
+<script>
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
+import UserPhoneDialog from '@/components/UserPhoneDialog.vue';
 
-<style scoped>
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+export default {
+  components: { UserPhoneDialog },
+  data() {
+    return {
+      locale: zhCN,
+    };
+  },
+};
+</script>
+
+<style lang="scss">
+#app {
+  margin: 0 auto;
+  user-select: text;
+
+  img {
+    user-select: none;
+  }
 }
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
+.page-app {
+  background: #fff;
+  height: 100vh;
+  //min-width: 1200px;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 </style>
