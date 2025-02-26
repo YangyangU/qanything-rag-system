@@ -49,5 +49,12 @@
             "pnpm run eslint",
             "pnpm run prettier"
         ]
-    }
+    },
+    "eslintIgnore": [
+        "node_modules/",
+        "dist/",
+        "build/",
+        "coverage/",
+        "*.config.js"
+    ]
 }
